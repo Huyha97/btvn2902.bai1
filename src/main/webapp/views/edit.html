@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style th:replace="/layout :: css"></style>
+</head>
+<body>
+<h1>Edit Human</h1>
+<form id="form" th:action="@{/human/edit}" method="post" th:object="${human}">
+    <label>Name:
+        <input type="text" th:field="*{name}" required>
+        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+    </label>
+
+    <label>Phone:
+        <input type="text" th:field="*{phone}" required>
+        <p th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
+    </label>
+
+    <label>Address:
+        <textarea th:field="*{address}" required></textarea><br>
+    </label>
+
+    <label>IdCard:
+        <input type="text" th:field="*{idCard}" required>
+    <button type="submit">Edit</button>
+        </label>
+</form>
+<footer th:replace="/layout::footer"></footer>
+</body>
+</html>
